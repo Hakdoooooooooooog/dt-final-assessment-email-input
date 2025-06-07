@@ -156,38 +156,6 @@ const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 Built with Tailwind CSS for mobile-first responsive design with hover states and smooth transitions.
 
-## 🚀 Deployment
-
-### Deploy on Vercel
-
-The easiest way to deploy this Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme):
-
-1. Push your code to GitHub
-2. Import your repository in Vercel
-3. Deploy with zero configuration
-
-### Other Deployment Options
-
-This app can be deployed on any platform that supports Next.js:
-
-- Netlify
-- Railway
-- AWS
-- Google Cloud Platform
-- Azure
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
 ## 🔗 Learn More
 
 To learn more about the technologies used:
