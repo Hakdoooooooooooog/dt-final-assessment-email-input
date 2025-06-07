@@ -161,6 +161,7 @@ export const Emails = ({
       setIsLoading(false);
     }
   }, [filteredEmails, setEmailListRecipients, setIsLoading]);
+
   const handleOnClick = (e: React.MouseEvent<HTMLLIElement>) => {
     const email = e.currentTarget.textContent;
     if (email) {
