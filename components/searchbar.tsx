@@ -9,17 +9,16 @@ const SearchBar = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [email, setEmail] = useState("");
   const [emailList, setEmailList] = useState<string[]>([]);
-  const [filteredEmails, setFilteredEmails] = useState(emails);
+  const [filteredEmails, setFilteredEmails] = useState<string[]>([]);
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   const debouncedEmail = useDebounce(email, 500);
 
   const filterEmails = (query: string): string[] => {
-    if (!query || query === "") return [];
+    if (!query) return [];
 
     const lowerCaseQuery = query.toLowerCase();
-
     return emails.filter((email) =>
       email.toLowerCase().includes(lowerCaseQuery)
     );
@@ -151,15 +150,16 @@ export const Emails = ({
   useEffect(() => {
     setIsLoading(true);
 
-    if (filteredEmails.length > 0) {
-      setTimeout(() => {
-        setEmailList(filteredEmails);
-        setIsLoading(false);
-      }, 500);
-    } else {
+    const timeoutId = setTimeout(() => {
+      setEmailList(filteredEmails);
+      setIsLoading(false);
+    }, 500);
+
+    return () => {
       setEmailList([]);
       setIsLoading(false);
-    }
+      clearTimeout(timeoutId);
+    };
   }, [filteredEmails, setEmailListRecipients, setIsLoading]);
 
   const handleOnClick = (e: React.MouseEvent<HTMLLIElement>) => {
