@@ -65,7 +65,7 @@ const SearchBar = () => {
   }, [debouncedEmail]);
 
   return (
-    <div className="relative flex items-center w-full max-w-xl p-2 bg-white text-gray-500 rounded-sm shadow-md">
+    <div className="relative flex items-center  min-w-md max-w-xl p-2 bg-white text-gray-500 rounded-sm shadow-md">
       <ul className="w-full flex flex-wrap gap-2 list-none">
         {emailList.length > 0 &&
           emailList.map((email, index) => (
