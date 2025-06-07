@@ -96,7 +96,7 @@ dt-final-assessment-email-input/
 ├── components/
 │   └── searchbar.tsx     # Email input component
 ├── data/
-│   └── emails.js         # Mock email data (1000+ emails)
+│   └── emails.ts         # Mock email data (1000+ emails)
 ├── public/
 │   └── loading.gif       # Loading animation
 └── package.json          # Dependencies and scripts
