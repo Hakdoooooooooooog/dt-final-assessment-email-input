@@ -150,15 +150,19 @@ export const Emails = ({
   useEffect(() => {
     setIsLoading(true);
 
-    const timeoutId = setTimeout(() => {
-      setEmailList(filteredEmails);
+    if (filteredEmails.length > 0) {
+      setTimeout(() => {
+        setEmailList(filteredEmails);
+        setIsLoading(false);
+      }, 500);
+    } else {
+      setEmailList([]);
       setIsLoading(false);
-    }, 500);
+    }
 
     return () => {
       setEmailList([]);
       setIsLoading(false);
-      clearTimeout(timeoutId);
     };
   }, [filteredEmails, setEmailListRecipients, setIsLoading]);
 
