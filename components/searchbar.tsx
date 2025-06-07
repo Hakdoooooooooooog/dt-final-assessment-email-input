@@ -33,7 +33,6 @@ const SearchBar = () => {
     const value = e.target.value;
     setEmail(value);
   };
-
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Tab") {
       e.preventDefault();
@@ -44,6 +43,7 @@ const SearchBar = () => {
         setEmailList((prev) => [...prev, email]);
       }
       setEmail("");
+      setFilteredEmails([]);
     } else if (e.key === "Enter" && email) {
       if (filteredEmails.length > 0) {
         const selectedEmail = filteredEmails[0];
@@ -52,6 +52,7 @@ const SearchBar = () => {
         setEmailList((prev) => [...prev, email]);
       }
       setEmail("");
+      setFilteredEmails([]);
     }
   };
 
@@ -149,12 +150,17 @@ export const Emails = ({
 
   useEffect(() => {
     setIsLoading(true);
-    setTimeout(() => {
-      setEmailList(filteredEmails);
-      setIsLoading(false);
-    }, 1000);
-  }, [filteredEmails, setEmailListRecipients, setIsLoading]);
 
+    if (filteredEmails.length > 0) {
+      setTimeout(() => {
+        setEmailList(filteredEmails);
+        setIsLoading(false);
+      }, 500);
+    } else {
+      setEmailList([]);
+      setIsLoading(false);
+    }
+  }, [filteredEmails, setEmailListRecipients, setIsLoading]);
   const handleOnClick = (e: React.MouseEvent<HTMLLIElement>) => {
     const email = e.currentTarget.textContent;
     if (email) {
@@ -167,7 +173,7 @@ export const Emails = ({
   return (
     <>
       {emailList.length > 0 && (
-        <ul className="w-2/3 absolute top-full left-0 p-4 bg-white text-black shadow-lg max-h-60 overflow-y-auto">
+        <ul className="max-w-fit absolute top-full left-0 bg-white text-black shadow-lg max-h-60 overflow-y-auto">
           {emailList.map((email, index) => (
             <li
               key={index}
